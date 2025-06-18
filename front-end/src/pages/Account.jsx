@@ -1,10 +1,12 @@
 import React from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, Navigate, useParams } from 'react-router-dom'
 import AccProfile from '../component/AccProfile';
 import AccPlaces from '../component/AccPlaces';
+import { useUserContext } from '../context/UserContext';
 
 const Account = () => {
     const {subpage} = useParams();
+    const {user, ready} = useUserContext();
 
     const buttonClass = (button) => {
         let finalClass = 
@@ -14,6 +16,8 @@ const Account = () => {
 
         return finalClass;
     };
+
+    if(!user && ready) return <Navigate to="/login"/>
 
     return (
         <section className='p-8'>

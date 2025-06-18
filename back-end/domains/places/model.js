@@ -11,7 +11,6 @@ const placeSchema = new Schema({
     price: Number,
     checkin: String,
     checkout: String,
-    checkout: String,
     guests: Number
 });
 
