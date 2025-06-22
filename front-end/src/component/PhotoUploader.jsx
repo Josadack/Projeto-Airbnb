@@ -1,6 +1,5 @@
 import axios from 'axios'
-import React from 'react'
-import imageLink from "C:\\Users\\Levi Ferreira\\Desktop\\Projeto Airbnb\\back-end/tmp/1750128031834.jpg"
+
 
 const PhotoUploader = ({ photolink, setPhotoLink, setPhotos, photos}) => {
 
@@ -17,6 +16,22 @@ const PhotoUploader = ({ photolink, setPhotoLink, setPhotos, photos}) => {
         } else {
             alert("Não existe nenhum link a ser enviado!")
         }
+    };
+
+    const uploadPhoto = async (e) =>{
+        const { files } = e.target;
+        const filesArray = [...files]
+
+        const formData = new FormData();
+
+        filesArray.forEach((file) => formData.append("files", file));
+
+        const { data: urlArray } = await axios.post("/places/upload", formData, {
+            headers: {"Content-Type": "multipart/form-data"},
+        });
+
+         setPhotos((prevValue) => [...prevValue, ...urlArray])
+
     }
 
     return (
@@ -44,7 +59,12 @@ const PhotoUploader = ({ photolink, setPhotoLink, setPhotos, photos}) => {
                  ))}
                 <label htmlFor="file"
                     className='flex items-center justify-center aspect-square rounded-2xl border border-gray-300 cursor-pointer' >
-                    <input type="file" id="file" className='hidden' />
+                    <input 
+                    type="file" 
+                    id="file"
+                    className='hidden' 
+                    multiple
+                    onChange={uploadPhoto}/>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
                     </svg>

@@ -2,8 +2,8 @@ import { Router } from "express";
 import Place from "./model.js";
 import { JWTVerify } from "../../utils/jwtVerify.js";
 import { connectDb } from "../../config/db.js";
-import { downloadImage } from "../../utils/imageDownloader.js";
-import { __dirname } from "../../server.js";
+import { downloadImage, uploadImage } from "./controller.js";
+
 
 const router = Router();
 
@@ -51,7 +51,7 @@ router.post('/upload/link', async (req, res) =>{
   const {link} = req.body;
 
   try {
-    const  filename = await downloadImage(link, `${__dirname }/tmp/`);
+    const  filename = await downloadImage(link);
 
     res.json(filename)
   } catch (error) {
@@ -59,5 +59,17 @@ router.post('/upload/link', async (req, res) =>{
     res.status(500).json("Erro ao baixar a imagem");
   }
   
-})
+});
+
+router.post(
+  "/upload",
+  uploadImage().array("files", 10),
+   async (req, res) => {
+
+       const uploadedFileNames = req.files.map(file => file.filename);
+       res.json(uploadedFileNames)
+
+    
+});
+
 export default router;
