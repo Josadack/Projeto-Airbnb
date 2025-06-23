@@ -1,29 +1,19 @@
 import React from 'react'
 
-const Item = () => {
+const Item = ({place}) => {
   return (
     <a href="/" className='flex flex-col gap-2'>
         <img 
-        src="https://static.arboimoveis.com.br/AP0074_PROC/320x240/filestorageemulated0pictureswhatsappimg20230215wa00631676589389792jpg1676589391911.jpg"
+        src={`http://localhost:4000/tmp/${place.photos[0]}`}
          alt="" 
          className=' aspect-square object-cover rounded-2xl'/>
          <div>
-        <h3 className='text-xl font-semibold'>Cabo Frio, Rio de Janeiro</h3>
+        <h3 className='text-xl font-semibold'>{place.city}</h3>
         <p className='truncate text-gray-600'>
-          Cobertura, duplex, em frente a praia das Dunas, Cabo Frio. As três
-          suítes com ar condicionado. TV na suíte master e sala, com sky na
-          sala. Cozinha equipada. Wi-fi de 120mbs da Vivo Fibra. Piscina e
-          churrasqueira privativas. Estacionamento para dois carros dentro do
-          prédio. Com uma área externa com vista panorâmica da praia das Dunas.
-          O espaço Cobertura duplex em frente a praia das Dunas, em Cabo Frio. O
-          apartamento conta com três suítes e mais um banheiro social, piscina e
-          churrasqueira privativas, com uma área externa com vista panorâmica da
-          praia das Dunas. Bairro calmo. Na rua lateral você encontra uma
-          padaria que oferece café da manhã e alguns restaurantes. 3-5min da
-          Praia do Forte (indo de carro). Cobertura fica no 4º andar.
+          {place.description}
         </p>
         </div>
-        <p><span className='font-semibold'>R$ 550</span>  por noite</p>
+        <p><span className='font-semibold'>R$ {place.price}</span>  por noite</p>
         </a>
   )
 }
