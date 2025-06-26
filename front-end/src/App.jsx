@@ -7,6 +7,7 @@ import Login from "./pages/Login"
 import Register from "./pages/Register"
 import Account from "./pages/Account"
 import Header from "./component/Header"
+import Place from "./pages/Place"
 
 axios.defaults.baseURL = import.meta.env.VITE_AXIOS_BASE_URL;
 axios.defaults.withCredentials = true;
@@ -25,6 +26,7 @@ function App() {
           <Route path="/login" element={ <Login />} /> 
           <Route path="/register" element={ <Register />} /> 
           <Route path="/account/:subpage/:action?/:id?" element={ <Account />} /> 
+          <Route path="/place/:id" element={ <Place />} /> 
         </Routes>
       </BrowserRouter>
       </UserContextProvider>
