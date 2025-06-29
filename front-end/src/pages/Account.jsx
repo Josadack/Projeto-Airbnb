@@ -3,6 +3,7 @@ import { Link, Navigate, useParams } from 'react-router-dom'
 import AccProfile from '../component/AccProfile';
 import AccPlaces from '../component/AccPlaces';
 import { useUserContext } from '../context/UserContext';
+import AccBookings from '../component/AccBookings';
 
 const Account = () => {
     const {subpage} = useParams();
@@ -25,11 +26,12 @@ const Account = () => {
                 <div className='flex gap-2'>
                     <Link to="/account/profile" className={buttonClass("profile")}> Perfil </Link>
                     <Link to="/account/bookings" className={buttonClass("bookings")}> Reservas </Link>
-                    <Link to="/account/places" className={buttonClass("places")}> Lugares </Link>
+                    <Link to="/account/places" className={buttonClass("places")}> Lugares </Link> 
                 </div>
 
                 {subpage === "profile" && <AccProfile />}
                 {subpage === "places" && <AccPlaces />}
+                {subpage === "bookings" && <AccBookings />}
             </div>
         </section>
     )
