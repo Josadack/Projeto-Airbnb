@@ -144,7 +144,7 @@ router.post("/upload/link", async (req, res) => {
   }
 });
 
-router.post("/upload", uploadImage().array("files", 10), async (req, res) => {
+router.post("/upload", uploadImage(), async (req, res) => { 
   const uploadedFileNames = req.files.map((file) => file.filename);
   res.json(uploadedFileNames);
 });

@@ -45,5 +45,5 @@ export const uploadImage = () => {
       cb(null, `${ Date.now()}-${uniqueSuffix}.${extension}`);
     },
   });
-  return multer({ storage });
+  return multer({ storage }).array("files", 10);
 };
