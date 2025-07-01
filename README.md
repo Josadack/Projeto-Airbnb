@@ -48,3 +48,62 @@ Siga os passos abaixo para configurar e rodar o projeto em seu ambiente local.
     ```bash  
     git clone https://github.com/seu-usuario/seu-repositorio-backend.git  
     cd seu-repositorio-backend  
+Instale as dependências:
+
+bash
+npm install  
+# ou  
+yarn install  
+Crie um arquivo .env na raiz do diretório do backend com as seguintes variáveis de ambiente:
+
+env
+MONGO_URL="mongodb+srv://<seu_usuario>:<sua_senha>@<seu_cluster>.mongodb.net/<seu_database>?retryWrites=true&w=majority"  
+JWT_SECRET="alguma_string_secreta_forte_para_jwt"  
+IMAGEKIT_PUBLIC_KEY="chave_publica_do_imagekit"  
+IMAGEKIT_PRIVATE_KEY="chave_privada_do_imagekit"  
+IMAGEKIT_URL_ENDPOINT="https://ik.imagekit.io/seu_id/"  
+# A porta padrão para o backend (ex: 4000)  
+PORT=4000  
+Substitua os valores <...> pelas suas próprias credenciais e chaves do ImageKit.io.
+Para MONGO_URL, você pode usar um banco de dados MongoDB local ou um cluster no MongoDB Atlas.
+Para JWT_SECRET, gere uma string aleatória longa.
+Inicie o servidor backend:
+
+bash
+npm start  
+# ou  
+yarn start  
+O servidor estará rodando em http://localhost:4000 (ou na porta que você configurou).
+
+2. Configurar o Frontend
+Clone o repositório do frontend:
+
+bash
+git clone https://github.com/seu-usuario/seu-repositorio-frontend.git  
+cd seu-repositorio-frontend  
+(Substitua pelo caminho correto do seu frontend)
+
+Instale as dependências:
+
+bash
+npm install  
+# ou  
+yarn install  
+Crie um arquivo .env na raiz do diretório do frontend com a seguinte variável de ambiente:
+
+env
+VITE_API_BASE_URL="http://localhost:4000/api"  
+# Se você for implantar, esta URL mudará para a URL do seu backend em produção (ex: https://seu-backend.onrender.com/api)  
+Inicie a aplicação frontend:
+
+bash
+npm run dev  
+# ou  
+yarn dev  
+A aplicação estará rodando em http://localhost:5173 (ou na porta que o Vite definir).
+
+🚀 Como Usar
+Acesse a Aplicação: Abra seu navegador e vá para http://localhost:5173.
+Registro/Login: Crie uma nova conta ou faça login com uma conta existente.
+Adicionar Acomodação: Navegue até a seção "Minhas Acomodações" e clique em "Adicionar Novo Lugar" para registrar uma nova propriedade, incluindo detalhes e fotos.
+Explorar: Navegue pela página inicial para ver as acomodações listadas por outros usuários (ou por você mesmo).
