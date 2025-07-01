@@ -1,5 +1,10 @@
 import axios from 'axios'
 
+// Defina a base da URL das imagens aqui, fora do componente se puder ser reutilizada,
+// ou dentro se for específica para este componente.
+const IMAGES_BASE_URL = import.meta.env.MODE === "development"
+    ? "http://localhost:4000" // A porta do seu backend para servir as imagens
+    : "https://projeto-airbnb.onrender.com"; // O domínio do seu backend no Render
 
 const PhotoUploader = ({ photolink, setPhotoLink, setPhotos, photos }) => {
 
@@ -41,7 +46,7 @@ const PhotoUploader = ({ photolink, setPhotoLink, setPhotos, photos }) => {
     };
 
     const promotePhoto = (fileURL) => {
-          const newPhotos = [fileURL, ...photos.filter(photo => photo !== fileURL)]
+        const newPhotos = [fileURL, ...photos.filter(photo => photo !== fileURL)]
 
         setPhotos(newPhotos);
     };
@@ -65,7 +70,7 @@ const PhotoUploader = ({ photolink, setPhotoLink, setPhotos, photos }) => {
                 {photos.map((photo) => (
                     <div className='relative'>
                         <img className='aspect-square object-cover rounded-2xl'
-                           src={photo ? `http://localhost:4000/tmp/${photo}` : `https://projeto-airbnb.onrender.com/tmp/${photo}`}
+                            src={`${IMAGES_BASE_URL}/tmp/${photo}`}
                             alt='Imagens do lugar'
                             key={photo}
                         />
