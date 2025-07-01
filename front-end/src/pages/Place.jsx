@@ -280,7 +280,7 @@ const Place = () => {
               {place.photos.map((photo, index) => (
                 <img
                   className={`aspect-square w-full object-cover`}
-                  src={`http://localhost:4000/tmp/${photo}`}
+                  src={photo ? `http://localhost:4000/tmp/${photo}` : `https://projeto-airbnb.onrender.com/tmp/${photo}`}
                   alt="Imagem da Acomodação"
                   key={photo}
                 />
