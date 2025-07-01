@@ -140,7 +140,7 @@ const Place = () => {
             .map((photo, index) => (
               <img
                 className={`${index === 0 ? "row-span-2 h-full object-center" : ""} aspect-square w-full cursor-pointer transition hover:opacity-75 sm:object-cover`}
-                src={`http://localhost:4000/tmp/${photo}`}
+                 src={photo ? `http://localhost:4000/tmp/${photo}` : `https://projeto-airbnb.onrender.com/tmp/${photo}`}
                 alt="Imagem da Acomodação"
                 onClick={() => setOverlay(true)}
                 key={photo}

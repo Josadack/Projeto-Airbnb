@@ -10,7 +10,7 @@ import Header from "./component/Header"
 import Place from "./pages/Place"
 
 axios.defaults.baseURL = 
-import.meta.env.MODE === "development" 
+ import.meta.env.MODE === "development" 
       ? "http://localhost:4000/api"
       : "https://projeto-airbnb.onrender.com/api"
                                                   

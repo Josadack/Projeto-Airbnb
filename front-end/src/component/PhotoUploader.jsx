@@ -65,7 +65,7 @@ const PhotoUploader = ({ photolink, setPhotoLink, setPhotos, photos }) => {
                 {photos.map((photo) => (
                     <div className='relative'>
                         <img className='aspect-square object-cover rounded-2xl'
-                            src={`${axios.defaults.baseURL}/tmp/${photo}`}
+                           src={photo ? `http://localhost:4000/tmp/${photo}` : `https://projeto-airbnb.onrender.com/tmp/${photo}`}
                             alt='Imagens do lugar'
                             key={photo}
                         />
